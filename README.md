@@ -50,6 +50,12 @@ https://cdn.yfhl.net/java-win/mysql-installer-community-5.7.31.0.msi
 -- 安装数据库管理工具    
 https://cdn.yfhl.net/java-win/SQLyog.12.3.1.0.zip    
 
+### 安装视频：    
+https://www.ixigua.com/7041491265027834381?utm_source=xiguastudio
+
+
+
+
 
 
 
