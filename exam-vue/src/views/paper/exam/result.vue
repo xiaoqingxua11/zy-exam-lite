@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
 
-    <h2 class="text-center">开发人员入职培训考试</h2>
+    <h2 class="text-center">{{paperData.title}}</h2>
     <p class="text-center" style="color: #666">{{ paperData.createTime }}</p>
 
     <el-row :gutter="24" style="margin-top: 50px">
