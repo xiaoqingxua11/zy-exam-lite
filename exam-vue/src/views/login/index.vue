@@ -7,7 +7,7 @@
 
         <div class="login-main">
           <div class="title-container">
-            <h3 class="title">{{siteData.siteName}}</h3>
+            <h3 class="title">{{ siteData.siteName }}</h3>
           </div>
 
           <el-form-item prop="username">
@@ -80,7 +80,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import { validUsername } from '@/utils/validate'
 import 'element-ui/lib/theme-chalk/display.css'
 

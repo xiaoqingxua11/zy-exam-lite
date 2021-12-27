@@ -4,7 +4,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">云帆考试系统</h3>
+        <h3 class="title">{{ siteData.siteName }}</h3>
       </div>
 
       <el-form-item prop="userName">
@@ -80,10 +80,14 @@
 </template>
 
 <script>
-import { userReg } from '@/api/sys/user/user'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Register',
+  computed: {
+    ...mapGetters([
+      'siteData'
+    ])
+  },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (value.length < 5) {

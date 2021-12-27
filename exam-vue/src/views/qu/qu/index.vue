@@ -244,7 +244,6 @@ export default {
     doImport(e) {
       const file = e.target.files[0]
 
-
       importExcel(file).then(res => {
         if (res.code !== 0) {
           this.$alert(res.data.msg, '导入信息', {

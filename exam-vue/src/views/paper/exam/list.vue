@@ -99,11 +99,9 @@
 import DataTable from '@/components/DataTable'
 
 export default {
-  name: 'OnlineList',
   components: { DataTable },
   data() {
     return {
-
       openTypes: [
         {
           value: 1,

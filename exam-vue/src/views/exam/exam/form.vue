@@ -487,19 +487,6 @@ export default {
 
     repoChange(e, row) {
       if (e != null) {
-        // // 去重移除
-        // const index = this.repoList.findIndex((item) => item.repoId === e.id && row.rowId === item.rowId)
-        // console.log('index', index)
-        // if (index != -1) {
-        //   this.$message({
-        //     message: '不能选择重复的题库！',
-        //     type: 'warning'
-        //   })
-        //   // 移除
-        //   this.repoList.splice(index, 1)
-        //   return
-        // }
-
         row.totalRadio = e.radioCount
         row.totalMulti = e.multiCount
         row.totalJudge = e.judgeCount
