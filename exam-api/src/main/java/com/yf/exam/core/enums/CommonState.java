@@ -1,4 +1,4 @@
-package com.yf.exam.core.api.enums;
+package com.yf.exam.core.enums;
 
 /**
  * 通用的状态枚举信息

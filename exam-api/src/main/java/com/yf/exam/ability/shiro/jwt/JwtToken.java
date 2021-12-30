@@ -1,4 +1,4 @@
-package com.yf.exam.modules.shiro.jwt;
+package com.yf.exam.ability.shiro.jwt;
  
 import lombok.Data;
 import org.apache.shiro.authc.AuthenticationToken;

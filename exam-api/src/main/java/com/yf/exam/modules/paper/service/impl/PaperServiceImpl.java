@@ -7,8 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yf.exam.core.api.dto.PagingReqDTO;
 import com.yf.exam.core.exception.ServiceException;
 import com.yf.exam.core.utils.BeanMapper;
-import com.yf.exam.core.utils.StringUtils;
-import com.yf.exam.modules.enums.JoinType;
+import com.yf.exam.core.enums.JoinType;
 import com.yf.exam.modules.exam.dto.ExamDTO;
 import com.yf.exam.modules.exam.dto.ExamRepoDTO;
 import com.yf.exam.modules.exam.dto.ext.ExamRepoExtDTO;
@@ -40,17 +39,13 @@ import com.yf.exam.modules.sys.user.entity.SysUser;
 import com.yf.exam.modules.sys.user.service.SysUserService;
 import com.yf.exam.modules.user.book.service.UserBookService;
 import com.yf.exam.modules.user.exam.service.UserExamService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
 * <p>

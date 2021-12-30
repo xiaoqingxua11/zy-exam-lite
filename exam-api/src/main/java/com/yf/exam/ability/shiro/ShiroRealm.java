@@ -1,8 +1,8 @@
-package com.yf.exam.modules.shiro;
+package com.yf.exam.ability.shiro;
 
 
-import com.yf.exam.modules.shiro.jwt.JwtToken;
-import com.yf.exam.modules.shiro.jwt.JwtUtils;
+import com.yf.exam.ability.shiro.jwt.JwtToken;
+import com.yf.exam.ability.shiro.jwt.JwtUtils;
 import com.yf.exam.modules.sys.user.dto.response.SysUserLoginDTO;
 import com.yf.exam.modules.sys.user.service.SysUserRoleService;
 import com.yf.exam.modules.sys.user.service.SysUserService;

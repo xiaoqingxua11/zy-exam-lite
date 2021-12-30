@@ -1,4 +1,4 @@
-package com.yf.exam.modules.shiro.jwt;
+package com.yf.exam.ability.shiro.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

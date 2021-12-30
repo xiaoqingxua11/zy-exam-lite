@@ -1,4 +1,4 @@
-package com.yf.exam.modules.enums;
+package com.yf.exam.core.enums;
 
 /**
  * 组卷方式

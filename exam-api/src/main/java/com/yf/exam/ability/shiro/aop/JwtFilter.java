@@ -1,9 +1,9 @@
-package com.yf.exam.modules.shiro.aop;
+package com.yf.exam.ability.shiro.aop;
 
 
+import com.yf.exam.ability.shiro.jwt.JwtToken;
 import com.yf.exam.aspect.utils.InjectUtils;
 import com.yf.exam.modules.Constant;
-import com.yf.exam.modules.shiro.jwt.JwtToken;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 
