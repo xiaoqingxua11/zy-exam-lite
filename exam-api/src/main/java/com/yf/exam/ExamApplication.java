@@ -30,6 +30,11 @@ public class ExamApplication implements WebMvcConfigurer {
 		String port = env.getProperty("server.port");
 		String path = env.getProperty("server.servlet.context-path");
 
+		// 未配置默认空白
+		if(path == null){
+			path = "";
+		}
+
 
 		log.info("\n----------------------------------------------------------\n\t" +
 				"云帆考试系统启动成功，访问路径如下:\n\t" +
