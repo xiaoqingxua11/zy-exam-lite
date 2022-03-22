@@ -46,7 +46,7 @@ https://cdn.yfhl.net/java-win/jdk-8u181-windows-x64.exe
 2、安装MySQL    
 https://cdn.yfhl.net/java-win/mysql-installer-community-5.7.31.0.msi    
 -- 安装过程可能需要VC++    
--- https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=40784    
+-- https://www.microsoft.com/zh-CN/download/details.aspx?id=40784    
 -- 安装数据库管理工具    
 https://cdn.yfhl.net/java-win/SQLyog.12.3.1.0.zip    
 
