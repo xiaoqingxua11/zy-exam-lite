@@ -7,6 +7,7 @@ import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.yf.exam.core.utils.file.MD5Util;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -15,16 +16,11 @@ import java.util.Date;
  */
 public class JwtUtils {
 
-
 	/**
 	 * 有效期24小时
 	 */
 	private static final long EXPIRE_TIME = 24 * 60 * 60 * 1000;
 
-	/**
-	 * 使用固定的解密秘钥
-	 */
-	private static final String SECRET = "PisyGFJhgzrctMOofvaHLuiNFOmktedw";
 
 	/**
 	 * 校验是否正确
@@ -86,6 +82,18 @@ public class JwtUtils {
 	 * @return
 	 */
 	private static String encryptSecret(String userName){
-		return  MD5Util.MD5(userName + "&" + SECRET);
+
+		// 一个简单的登录规则，用户名+当前月份为加密串，意思每个月会变，要重新登录
+		// 可自行修改此规则
+		Calendar cl = Calendar.getInstance();
+		cl.setTimeInMillis(System.currentTimeMillis());
+		StringBuffer sb = new StringBuffer(userName)
+				.append("&")
+				.append(cl.get(Calendar.MONTH));
+
+		// 获取MD5
+		String secret = MD5Util.MD5(sb.toString());
+
+		return  MD5Util.MD5(userName + "&" + secret);
 	}
 }

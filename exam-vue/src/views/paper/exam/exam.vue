@@ -393,7 +393,7 @@ export default {
     margin: 2px;
   }
 
-  /deep/
+  ::v-deep
   .el-radio, .el-checkbox{
     padding: 9px 20px 9px 10px;
     border-radius: 4px;
@@ -411,22 +411,22 @@ export default {
     border: #dcdfe6 1px dotted;
   }
 
-  /deep/
+  ::v-deep
   .el-checkbox__inner {
     display: none;
   }
 
-  /deep/
+  ::v-deep
   .el-radio__inner{
     display: none;
   }
 
-  /deep/
+  ::v-deep
   .el-checkbox__label{
     line-height: 30px;
   }
 
-  /deep/
+  ::v-deep
   .el-radio__label{
     line-height: 30px;
   }
