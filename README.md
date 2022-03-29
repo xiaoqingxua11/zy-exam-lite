@@ -10,6 +10,11 @@
 商业版演示地址：https://exam.yfhl.net  
 商业版官网地址：https://www.yfhl.net  
 
+
+#开源版VS商业版
+![输入图片说明](%E8%80%83%E8%AF%95%E7%B3%BB%E7%BB%9F%E5%BC%80%E6%BA%90%E7%89%88%E4%B8%8E%E5%95%86%E4%B8%9A%E7%89%88%E5%AF%B9%E6%AF%94.png)
+
+
 # 介绍
 一款多角色在线培训考试系统，系统集成了用户管理、角色管理、部门管理、题库管理、试题管理、试题导入导出、考试管理、在线考试、错题训练等功能，考试流程完善。
 
@@ -59,10 +64,6 @@ https://www.ixigua.com/7041491265027834381?utm_source=xiguastudio
 
 
 
-
-
-
-
 # 快速运行  
 1、下载编译好的jar包到本目录（或您自行编译）：https://cdn.yfhl.net/lite/exam-api.jar  
 2、自行安装MySQL数据库（版本最好是5.7），将`安装资源中`的`数据库初始化.sql`导入到安装好的数据库  
@@ -77,17 +78,17 @@ https://www.ixigua.com/7041491265027834381?utm_source=xiguastudio
 
 网站：https://www.yfhl.net 
 
-QQ交流群：865330294 
+QQ交流群：865330294
+
+#商业版咨询
+
+郭经理：     
+    邮箱：835487894@qq.com   
+    手机：18603038204 
 
 杨经理：     
     邮箱：626264481@qq.com   
     手机：18710213152 
-
-郭经理：     
-    邮箱：835487894@qq.com   
-    手机：18603038204
-
-
 
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1207/173238_e6c22c67_2189748.jpeg "17-32-10.jpg")
@@ -102,4 +103,3 @@ QQ交流群：865330294
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1019/183040_38fd74ed_2189748.jpeg "1111.jpg")
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1019/183047_a31619cd_2189748.jpeg "1212.jpg")
 
-![输入图片说明](%E8%80%83%E8%AF%95%E7%B3%BB%E7%BB%9F%E5%BC%80%E6%BA%90%E7%89%88%E4%B8%8E%E5%95%86%E4%B8%9A%E7%89%88%E5%AF%B9%E6%AF%94.png)
