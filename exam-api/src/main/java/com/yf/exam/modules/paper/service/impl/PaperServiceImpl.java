@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yf.exam.core.api.dto.PagingReqDTO;
 import com.yf.exam.core.exception.ServiceException;
 import com.yf.exam.core.utils.BeanMapper;
-import com.yf.exam.core.enums.JoinType;
 import com.yf.exam.modules.exam.dto.ExamDTO;
 import com.yf.exam.modules.exam.dto.ExamRepoDTO;
 import com.yf.exam.modules.exam.dto.ext.ExamRepoExtDTO;
@@ -116,13 +115,7 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
         }
 
         // 考试题目列表
-        List<PaperQu> quList = new ArrayList<>();
-
-        // 按题库组卷的
-        if(JoinType.REPO_JOIN.equals(exam.getJoinType())){
-            //查找规则选定的题库
-            quList = this.generateByRepo(examId, exam.getLevel());
-        }
+        List<PaperQu> quList = this.generateByRepo(examId, exam.getLevel());
 
         if(CollectionUtils.isEmpty(quList)){
             throw new ServiceException(1, "规则不正确，无对应的考题！");
