@@ -71,7 +71,7 @@ https://www.ixigua.com/7041491265027834381?utm_source=xiguastudio
 
 # 其它支持
 
-网站：https://www.yfhl.net 
+网站：https://www.yfhl.net/?plan=osyf
 
 QQ交流群：865330294
 
