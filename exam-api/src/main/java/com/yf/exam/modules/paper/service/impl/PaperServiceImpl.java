@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yf.exam.core.api.ApiError;
 import com.yf.exam.core.api.dto.PagingReqDTO;
 import com.yf.exam.core.exception.ServiceException;
 import com.yf.exam.core.utils.BeanMapper;
@@ -102,6 +103,17 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
 
     @Override
     public String createPaper(String userId, String examId) {
+
+
+        // 校验是否有正在考试的试卷
+        QueryWrapper<Paper> wrapper = new QueryWrapper<>();
+        wrapper.lambda()
+                .eq(Paper::getUserId, userId)
+                .eq(Paper::getState, PaperState.ING);
+        Paper pp = this.getOne(wrapper, false);
+        if (pp!=null) {
+            throw new ServiceException(ApiError.ERROR_20010002);
+        }
 
         // 查找考试
         ExamDTO exam = examService.findById(examId);
