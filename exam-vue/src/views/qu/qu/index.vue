@@ -91,8 +91,8 @@
     </el-dialog>
 
     <el-dialog
-      title="导入试题"
       :visible.sync="importVisible"
+      title="导入试题"
       width="30%"
     >
 

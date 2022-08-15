@@ -10,7 +10,7 @@
           距离考试结束还有：
           <exam-timer v-model="paperData.leftSeconds" @timeout="doHandler()" />
 
-          <el-button style="float: right; margin-top: -10px" type="primary" icon="el-icon-plus" :loading="loading" @click="handHandExam()">
+          <el-button :loading="loading" style="float: right; margin-top: -10px" type="primary" icon="el-icon-plus" @click="handHandExam()">
             {{ handleText }}
           </el-button>
 

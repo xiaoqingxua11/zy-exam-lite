@@ -10,7 +10,7 @@
         </el-form-item>
 
         <el-form-item label="系统LOGO">
-          <file-upload v-model="postForm.backLogo"></file-upload>
+          <file-upload v-model="postForm.backLogo"/>
         </el-form-item>
 
         <el-form-item label="版权信息">

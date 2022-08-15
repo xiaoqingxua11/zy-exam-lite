@@ -184,16 +184,16 @@
 
         <el-tree
 
-          ref="tree"
           v-loading="treeLoading"
-          empty-text=" "
+          ref="tree"
           :data="treeData"
-          default-expand-all
-          show-checkbox
-          node-key="id"
           :default-checked-keys="postForm.departIds"
           :props="defaultProps"
           :filter-node-method="filterNode"
+          empty-text=" "
+          default-expand-all
+          show-checkbox
+          node-key="id"
           @check-change="handleCheckChange"
         />
 

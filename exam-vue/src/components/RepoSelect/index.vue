@@ -2,14 +2,14 @@
 
   <el-select
     v-model="currentValue"
+    :multiple="multi"
+    :remote-method="fetchData"
     filterable
     remote
-    :multiple="multi"
     reserve-keyword
     clearable
     automatic-dropdown
     placeholder="选择或搜索题库"
-    :remote-method="fetchData"
     class="filter-item"
     @change="handlerChange"
   >
