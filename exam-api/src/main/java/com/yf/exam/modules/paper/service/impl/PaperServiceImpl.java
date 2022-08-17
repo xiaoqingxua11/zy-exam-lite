@@ -13,6 +13,7 @@ import com.yf.exam.modules.exam.dto.ExamRepoDTO;
 import com.yf.exam.modules.exam.dto.ext.ExamRepoExtDTO;
 import com.yf.exam.modules.exam.service.ExamRepoService;
 import com.yf.exam.modules.exam.service.ExamService;
+import com.yf.exam.modules.paper.dto.PaperDTO;
 import com.yf.exam.modules.paper.dto.PaperQuDTO;
 import com.yf.exam.modules.paper.dto.ext.PaperQuAnswerExtDTO;
 import com.yf.exam.modules.paper.dto.ext.PaperQuDetailDTO;
@@ -104,13 +105,14 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
     @Override
     public String createPaper(String userId, String examId) {
 
-
         // 校验是否有正在考试的试卷
         QueryWrapper<Paper> wrapper = new QueryWrapper<>();
         wrapper.lambda()
                 .eq(Paper::getUserId, userId)
                 .eq(Paper::getState, PaperState.ING);
         Paper pp = this.getOne(wrapper, false);
+
+
         if (pp!=null) {
             throw new ServiceException(ApiError.ERROR_20010002);
         }
@@ -495,68 +497,26 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
         }
     }
 
-    @Transactional(rollbackFor = Exception.class)
-    @Override
-    public void reviewPaper(ExamResultRespDTO reqDTO) {
-
-        List<PaperQuDetailDTO> quList = reqDTO.getQuList();
-        List<PaperQu> list = new ArrayList<>();
-        for(PaperQuDetailDTO item: quList){
-            PaperQu qu = new PaperQu();
-            qu.setId(item.getId());
-            qu.setActualScore(item.getActualScore());
-            qu.setIsRight(true);
-            list.add(qu);
-        }
-
-        // 批量修改
-        paperQuService.updateBatchById(list);
-
-        // 客观分
-        int subjScore = paperQuService.sumSubjective(reqDTO.getId());
-
-        // 修改试卷状态
-        Paper paper = this.getById(reqDTO.getId());
-        paper.setSubjScore(subjScore);
-        paper.setUserScore(paper.getObjScore()+subjScore);
-        paper.setState(PaperState.FINISHED);
-        paper.setUpdateTime(new Date());
-        this.updateById(paper);
-
-        // 同步保存考试成绩
-        userExamService.joinResult(paper.getUserId(), paper.getExamId(), paper.getUserScore(), paper.getUserScore()>=paper.getQualifyScore());
-    }
-
     @Override
     public IPage<PaperListRespDTO> paging(PagingReqDTO<PaperListReqDTO> reqDTO) {
         return baseMapper.paging(reqDTO.toPage(), reqDTO.getParams());
     }
 
-    @Override
-    public List<Paper> findDeadPapers() {
 
-        // 结束后两分钟，非正常交卷
-        Calendar cl = Calendar.getInstance();
-        cl.setTimeInMillis(System.currentTimeMillis());
-        cl.add(Calendar.MINUTE, -5);
+    @Override
+    public PaperDTO checkProcess(String userId) {
 
         QueryWrapper<Paper> wrapper = new QueryWrapper<>();
         wrapper.lambda()
-                .le(Paper::getLimitTime, cl.getTime())
+                .eq(Paper::getUserId, userId)
                 .eq(Paper::getState, PaperState.ING);
 
+        Paper paper = this.getOne(wrapper, false);
 
-        return this.list(wrapper);
-    }
+        if (paper != null) {
+            return BeanMapper.map(paper, PaperDTO.class);
+        }
 
-    @Transactional(rollbackFor = Exception.class)
-    @Override
-    public void breakExam(String paperId) {
-
-        Paper paper = new Paper();
-        paper.setId(paperId);
-        paper.setState(PaperState.BREAK);
-        paper.setUpdateTime(new Date());
-        this.updateById(paper);
+        return null;
     }
 }
