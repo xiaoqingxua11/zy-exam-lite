@@ -57,8 +57,6 @@ https://cdn.yfhl.net/java-win/SQLyog.12.3.1.0.zip
 # 安装视频    
 https://www.ixigua.com/7041491265027834381?utm_source=xiguastudio
 
-
-
 # 快速运行  
 1、下载编译好的jar包到本目录（或您自行编译）：https://cdn.yfhl.net/lite/exam-api.jar  
 2、自行安装MySQL数据库（版本最好是5.7），将`安装资源中`的`数据库初始化.sql`导入到安装好的数据库  
@@ -68,13 +66,9 @@ https://www.ixigua.com/7041491265027834381?utm_source=xiguastudio
 6、如果无意外，可通过：http://localhost:8101 访问到项目了  
 7、管理员账号密码：admin/admin 学员账号：person/person  
  
-
 # 其它支持
-
 网站：https://www.yfhl.net/?plan=osyf
-
 QQ交流群：865330294
-
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1207/173238_e6c22c67_2189748.jpeg "17-32-10.jpg")
 ![主界面](https://images.gitee.com/uploads/images/2020/1019/182239_4a87af30_2189748.jpeg "222.jpg")
@@ -92,11 +86,8 @@ QQ交流群：865330294
 
 郭经理：     
     邮箱：835487894@qq.com   
-    手机：18603038204 
-
-杨经理：     
-    邮箱：626264481@qq.com   
-    手机：18710213152 
+    手机：18603038204  
+    微信号: gyh_yinzi  
 
 # 开源版&商业版对比
 ![输入图片说明](%E8%80%83%E8%AF%95%E7%B3%BB%E7%BB%9F%E5%BC%80%E6%BA%90%E7%89%88%E4%B8%8E%E5%95%86%E4%B8%9A%E7%89%88%E5%AF%B9%E6%AF%94.png)
