@@ -5,7 +5,7 @@
         <el-card class="box">
           <div slot="header" class="clearfix">
             <span>项目信息</span>
-            <el-button style="float: right; padding: 3px 0; font-size: 12px" type="text">系统版本：1.3.6</el-button>
+            <el-button style="float: right; padding: 3px 0; font-size: 12px" type="text">系统版本：{{ version }}</el-button>
           </div>
 
           <div style="line-height: 32px;">
@@ -64,8 +64,8 @@
 
             <div class="title">支持网站</div>
             <div>
-              <div>企业官网：<a href="https://www.yfhl.net">https://www.yfhl.net</a></div>
-              <div>在线试用：<a href="https://exam.yfhl.net">https://exam.yfhl.net</a></div>
+              <div>企业官网：<a href="https://www.yfhl.net" target="_blank">https://www.yfhl.net</a></div>
+              <div>在线试用：<a href="https://exam.yfhl.net" target="_blank">https://exam.yfhl.net</a></div>
             </div>
 
             <div class="title">在线试用</div>
@@ -85,12 +85,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import config from '../../../package.json'
 
 export default {
   name: 'Dashboard',
   data() {
     return {
-      currentRole: 'adminDashboard'
+      currentRole: 'adminDashboard',
+      version: config.version
     }
   },
   computed: {

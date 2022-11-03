@@ -25,7 +25,7 @@
 
 <script>
 
-import { fetchList } from '@/api/qu/repo'
+import { fetchPaging } from '@/api/qu/repo'
 
 export default {
   name: 'RepoSelect',
@@ -34,7 +34,8 @@ export default {
       type: Boolean,
       default: false
     },
-    value: String
+    value: String,
+    excludes: Array
   },
   data() {
     return {
@@ -58,9 +59,9 @@ export default {
   },
   methods: {
 
-    fetchData() {
-      fetchList({}).then(response => {
-        this.dataList = response.data
+    fetchData(q) {
+      fetchPaging({ current: 1, size: 1000, params: { title: q, excludes: this.excludes }}).then(res => {
+        this.dataList = res.data.records
       })
     },
     handlerChange(e) {

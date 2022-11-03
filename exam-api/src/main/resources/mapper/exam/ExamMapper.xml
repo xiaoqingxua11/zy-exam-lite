@@ -8,8 +8,6 @@
         <result column="title" property="title" />
         <result column="content" property="content" />
         <result column="open_type" property="openType" />
-        <result column="join_type" property="joinType" />
-        <result column="level" property="level" />
         <result column="state" property="state" />
         <result column="time_limit" property="timeLimit" />
         <result column="start_time" property="startTime" />

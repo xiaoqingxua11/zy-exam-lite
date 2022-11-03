@@ -129,7 +129,7 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
         }
 
         // 考试题目列表
-        List<PaperQu> quList = this.generateByRepo(examId, exam.getLevel());
+        List<PaperQu> quList = this.generateByRepo(examId);
 
         if(CollectionUtils.isEmpty(quList)){
             throw new ServiceException(1, "规则不正确，无对应的考题！");
@@ -216,7 +216,7 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
      * @param examId
      * @return
      */
-    private List<PaperQu> generateByRepo(String examId, Integer level){
+    private List<PaperQu> generateByRepo(String examId){
 
         // 查找规则指定的题库
         List<ExamRepoExtDTO> list = examRepoService.listByExam(examId);
@@ -233,7 +233,7 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
 
                 // 单选题
                 if(item.getRadioCount() > 0){
-                    List<Qu> radioList = quService.listByRandom(item.getRepoId(), QuType.RADIO, level, excludes, item.getRadioCount());
+                    List<Qu> radioList = quService.listByRandom(item.getRepoId(), QuType.RADIO, excludes, item.getRadioCount());
                     for (Qu qu : radioList) {
                         PaperQu paperQu = this.processPaperQu(item, qu);
                         quList.add(paperQu);
@@ -243,7 +243,7 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
 
                 //多选题
                 if(item.getMultiCount() > 0) {
-                    List<Qu> multiList = quService.listByRandom(item.getRepoId(), QuType.MULTI, level, excludes,
+                    List<Qu> multiList = quService.listByRandom(item.getRepoId(), QuType.MULTI, excludes,
                             item.getMultiCount());
                     for (Qu qu : multiList) {
                         PaperQu paperQu = this.processPaperQu(item, qu);
@@ -254,7 +254,7 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
 
                 // 判断题
                 if(item.getJudgeCount() > 0) {
-                    List<Qu> judgeList = quService.listByRandom(item.getRepoId(), QuType.JUDGE, level, excludes,
+                    List<Qu> judgeList = quService.listByRandom(item.getRepoId(), QuType.JUDGE, excludes,
                             item.getJudgeCount());
                     for (Qu qu : judgeList) {
                         PaperQu paperQu = this.processPaperQu(item, qu);
