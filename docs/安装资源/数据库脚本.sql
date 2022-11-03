@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 03/11/2022 11:02:31
+ Date: 03/11/2022 11:26:26
 */
 
 SET NAMES utf8mb4;
@@ -22,9 +22,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_exam`;
 CREATE TABLE `el_exam` (
-  `id` varchar(64) NOT NULL COMMENT 'ID',
-  `title` varchar(255) NOT NULL COMMENT '考试名称',
-  `content` varchar(255) NOT NULL DEFAULT '' COMMENT '考试描述',
+  `id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ID',
+  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT '考试名称',
+  `content` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '考试描述',
   `open_type` int NOT NULL DEFAULT '1' COMMENT '1公开2部门3定员',
   `state` int NOT NULL DEFAULT '0' COMMENT '考试状态',
   `time_limit` tinyint NOT NULL DEFAULT '0' COMMENT '是否限时',
@@ -37,7 +37,7 @@ CREATE TABLE `el_exam` (
   `qualify_score` int NOT NULL DEFAULT '0' COMMENT '及格分数',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `open_type` (`open_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='课程';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='考试主表';
 
 -- ----------------------------
 -- Records of el_exam
@@ -51,9 +51,9 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_exam_depart`;
 CREATE TABLE `el_exam_depart` (
-  `id` varchar(32) NOT NULL DEFAULT '' COMMENT 'ID',
-  `exam_id` varchar(32) NOT NULL DEFAULT '' COMMENT '考试ID',
-  `depart_id` varchar(32) NOT NULL DEFAULT '' COMMENT '部门ID',
+  `id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'ID',
+  `exam_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '考试ID',
+  `depart_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '部门ID',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `exam_id` (`exam_id`),
   KEY `depart_id` (`depart_id`)
@@ -70,9 +70,9 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_exam_repo`;
 CREATE TABLE `el_exam_repo` (
-  `id` varchar(64) NOT NULL COMMENT 'ID',
-  `exam_id` varchar(64) NOT NULL COMMENT '考试ID',
-  `repo_id` varchar(64) NOT NULL COMMENT '题库ID',
+  `id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ID',
+  `exam_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '考试ID',
+  `repo_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '题库ID',
   `radio_count` int NOT NULL DEFAULT '0' COMMENT '单选题数量',
   `radio_score` int NOT NULL DEFAULT '0' COMMENT '单选题分数',
   `multi_count` int NOT NULL DEFAULT '0' COMMENT '多选题数量',
@@ -99,11 +99,11 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_paper`;
 CREATE TABLE `el_paper` (
-  `id` varchar(64) NOT NULL COMMENT '试卷ID',
-  `user_id` varchar(64) NOT NULL COMMENT '用户ID',
-  `depart_id` varchar(32) NOT NULL DEFAULT '' COMMENT '部门ID',
-  `exam_id` varchar(64) NOT NULL COMMENT '规则ID',
-  `title` varchar(64) NOT NULL COMMENT '考试标题',
+  `id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '试卷ID',
+  `user_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户ID',
+  `depart_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '部门ID',
+  `exam_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '规则ID',
+  `title` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '考试标题',
   `total_time` int NOT NULL DEFAULT '0' COMMENT '考试时长',
   `user_time` int NOT NULL DEFAULT '0' COMMENT '用户时长',
   `total_score` int NOT NULL DEFAULT '0' COMMENT '试卷总分',
@@ -119,7 +119,7 @@ CREATE TABLE `el_paper` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `user_id` (`user_id`) USING BTREE,
   KEY `exam_id` (`exam_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='试卷';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='考试记录';
 
 -- ----------------------------
 -- Records of el_paper
@@ -132,12 +132,12 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_paper_qu`;
 CREATE TABLE `el_paper_qu` (
-  `id` varchar(64) NOT NULL COMMENT 'ID',
-  `paper_id` varchar(64) NOT NULL COMMENT '试卷ID',
-  `qu_id` varchar(64) NOT NULL COMMENT '题目ID',
+  `id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ID',
+  `paper_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '试卷ID',
+  `qu_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '题目ID',
   `qu_type` int NOT NULL COMMENT '题目类型',
   `answered` tinyint NOT NULL DEFAULT '0' COMMENT '是否已答',
-  `answer` varchar(5000) NOT NULL DEFAULT '' COMMENT '主观答案',
+  `answer` varchar(5000) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '主观答案',
   `sort` int NOT NULL DEFAULT '0' COMMENT '问题排序',
   `score` int NOT NULL DEFAULT '0' COMMENT '单题分分值',
   `actual_score` int NOT NULL DEFAULT '0' COMMENT '实际得分(主观题)',
@@ -147,7 +147,7 @@ CREATE TABLE `el_paper_qu` (
   KEY `qu_id` (`qu_id`) USING BTREE,
   KEY `paper_qu_id` (`paper_id`,`qu_id`) USING BTREE,
   KEY `sort` (`sort`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='试卷考题';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='考试记录考题';
 
 -- ----------------------------
 -- Records of el_paper_qu
@@ -160,20 +160,20 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_paper_qu_answer`;
 CREATE TABLE `el_paper_qu_answer` (
-  `id` varchar(64) NOT NULL COMMENT '自增ID',
-  `paper_id` varchar(64) NOT NULL COMMENT '试卷ID',
-  `answer_id` varchar(32) NOT NULL COMMENT '回答项ID',
-  `qu_id` varchar(32) NOT NULL COMMENT '题目ID',
+  `id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '自增ID',
+  `paper_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '试卷ID',
+  `answer_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '回答项ID',
+  `qu_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '题目ID',
   `is_right` tinyint NOT NULL DEFAULT '0' COMMENT '是否正确项',
   `checked` tinyint NOT NULL DEFAULT '0' COMMENT '是否选中',
   `sort` int NOT NULL DEFAULT '0' COMMENT '排序',
-  `abc` varchar(64) NOT NULL DEFAULT '' COMMENT '选项标签',
+  `abc` varchar(64) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '选项标签',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `paper_id` (`paper_id`) USING BTREE,
   KEY `qu_id` (`qu_id`) USING BTREE,
   KEY `paper_qu_id` (`paper_id`,`qu_id`) USING BTREE,
   KEY `sort` (`sort`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='试卷考题备选答案';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='考试记录答案';
 
 -- ----------------------------
 -- Records of el_paper_qu_answer
@@ -186,18 +186,18 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_qu`;
 CREATE TABLE `el_qu` (
-  `id` varchar(64) NOT NULL COMMENT '题目ID',
+  `id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '题目ID',
   `qu_type` int NOT NULL COMMENT '题目类型',
   `level` int NOT NULL DEFAULT '1' COMMENT '1普通,2较难',
-  `image` varchar(500) NOT NULL DEFAULT '' COMMENT '题目图片',
-  `content` varchar(2000) NOT NULL COMMENT '题目内容',
+  `image` varchar(500) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '题目图片',
+  `content` varchar(2000) COLLATE utf8mb4_general_ci NOT NULL COMMENT '题目内容',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
-  `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '题目备注',
-  `analysis` varchar(2000) NOT NULL DEFAULT '' COMMENT '整题解析',
+  `remark` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '题目备注',
+  `analysis` varchar(2000) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '整题解析',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `qu_type` (`qu_type`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='问题题目';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='试题主表';
 
 -- ----------------------------
 -- Records of el_qu
@@ -239,15 +239,15 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_qu_answer`;
 CREATE TABLE `el_qu_answer` (
-  `id` varchar(64) NOT NULL COMMENT '答案ID',
-  `qu_id` varchar(64) NOT NULL COMMENT '问题ID',
+  `id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '答案ID',
+  `qu_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '问题ID',
   `is_right` tinyint NOT NULL DEFAULT '0' COMMENT '是否正确',
-  `image` varchar(500) NOT NULL DEFAULT '' COMMENT '选项图片',
-  `content` varchar(5000) NOT NULL DEFAULT '' COMMENT '答案内容',
-  `analysis` varchar(5000) NOT NULL DEFAULT '' COMMENT '答案分析',
+  `image` varchar(500) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '选项图片',
+  `content` varchar(5000) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '答案内容',
+  `analysis` varchar(5000) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '答案分析',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `qu_id` (`qu_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='候选答案';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='试题答案选项';
 
 -- ----------------------------
 -- Records of el_qu_answer
@@ -369,15 +369,15 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_qu_repo`;
 CREATE TABLE `el_qu_repo` (
-  `id` varchar(64) NOT NULL,
-  `qu_id` varchar(64) NOT NULL COMMENT '试题',
-  `repo_id` varchar(64) NOT NULL COMMENT '归属题库',
+  `id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `qu_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '试题',
+  `repo_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '归属题库',
   `qu_type` int NOT NULL DEFAULT '0' COMMENT '题目类型',
   `sort` int NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `qu_id` (`qu_id`) USING BTREE,
   KEY `repo_id` (`repo_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='试题题库';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='试题题库关联';
 
 -- ----------------------------
 -- Records of el_qu_repo
@@ -419,14 +419,14 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_repo`;
 CREATE TABLE `el_repo` (
-  `id` varchar(64) NOT NULL COMMENT '题库ID',
-  `code` varchar(255) NOT NULL DEFAULT '' COMMENT '题库编号',
-  `title` varchar(255) NOT NULL COMMENT '题库名称',
-  `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '题库备注',
+  `id` varchar(64) CHARACTER SET utf8 NOT NULL COMMENT '题库ID',
+  `code` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '题库编号',
+  `title` varchar(255) CHARACTER SET utf8 NOT NULL COMMENT '题库名称',
+  `remark` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '题库备注',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='题库';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='题库信息';
 
 -- ----------------------------
 -- Records of el_repo
@@ -440,14 +440,14 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_user_book`;
 CREATE TABLE `el_user_book` (
-  `id` varchar(64) NOT NULL COMMENT 'ID',
-  `exam_id` varchar(32) NOT NULL COMMENT '考试ID',
-  `user_id` varchar(64) NOT NULL COMMENT '用户ID',
-  `qu_id` varchar(64) NOT NULL COMMENT '题目ID',
+  `id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ID',
+  `exam_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '考试ID',
+  `user_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户ID',
+  `qu_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL COMMENT '题目ID',
   `create_time` datetime DEFAULT NULL COMMENT '加入时间',
   `update_time` datetime DEFAULT NULL COMMENT '最近错误时间',
   `wrong_count` int NOT NULL COMMENT '错误时间',
-  `title` varchar(1000) NOT NULL COMMENT '题目标题',
+  `title` varchar(1000) COLLATE utf8mb4_general_ci NOT NULL COMMENT '题目标题',
   `sort` int NOT NULL COMMENT '错题序号',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `user_id` (`user_id`),
@@ -466,9 +466,9 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `el_user_exam`;
 CREATE TABLE `el_user_exam` (
-  `id` varchar(32) NOT NULL,
-  `user_id` varchar(32) NOT NULL COMMENT '用户ID',
-  `exam_id` varchar(32) NOT NULL COMMENT '考试ID',
+  `id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `user_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户ID',
+  `exam_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '考试ID',
   `try_count` int NOT NULL DEFAULT '1' COMMENT '考试次数',
   `max_score` int NOT NULL DEFAULT '0' COMMENT '最高分数',
   `passed` tinyint NOT NULL DEFAULT '0' COMMENT '是否通过',
@@ -489,15 +489,15 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_config`;
 CREATE TABLE `sys_config` (
-  `id` varchar(32) NOT NULL COMMENT 'ID',
-  `site_name` varchar(255) DEFAULT NULL COMMENT '系统名称',
-  `front_logo` varchar(255) DEFAULT NULL COMMENT '前端LOGO',
-  `back_logo` varchar(255) DEFAULT NULL COMMENT '后台LOGO',
-  `copy_right` varchar(255) DEFAULT NULL COMMENT '版权信息',
+  `id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ID',
+  `site_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '系统名称',
+  `front_logo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '前端LOGO',
+  `back_logo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '后台LOGO',
+  `copy_right` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '版权信息',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` varchar(255) DEFAULT '' COMMENT '创建人',
-  `update_by` varchar(255) DEFAULT '' COMMENT '修改人',
+  `create_by` varchar(255) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建人',
+  `update_by` varchar(255) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '修改人',
   `data_flag` int DEFAULT '0' COMMENT '数据标识',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='系统设置';
@@ -514,11 +514,11 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_depart`;
 CREATE TABLE `sys_depart` (
-  `id` varchar(32) NOT NULL COMMENT 'ID',
+  `id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ID',
   `dept_type` int NOT NULL DEFAULT '1' COMMENT '1公司2部门',
-  `parent_id` varchar(32) NOT NULL COMMENT '所属上级',
-  `dept_name` varchar(255) NOT NULL DEFAULT '' COMMENT '部门名称',
-  `dept_code` varchar(255) NOT NULL DEFAULT '' COMMENT '部门编码',
+  `parent_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '所属上级',
+  `dept_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '部门名称',
+  `dept_code` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '部门编码',
   `sort` int NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='部门信息';
@@ -544,8 +544,8 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
-  `id` varchar(32) NOT NULL COMMENT '角色ID',
-  `role_name` varchar(255) NOT NULL DEFAULT '' COMMENT '角色名称',
+  `id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色ID',
+  `role_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '角色名称',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='角色';
 
@@ -562,13 +562,13 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
-  `id` varchar(32) NOT NULL COMMENT 'ID',
-  `user_name` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
-  `real_name` varchar(255) NOT NULL DEFAULT '' COMMENT '真实姓名',
-  `password` varchar(255) NOT NULL DEFAULT '' COMMENT '密码',
-  `salt` varchar(255) NOT NULL DEFAULT '' COMMENT '密码盐',
-  `role_ids` varchar(500) NOT NULL DEFAULT '' COMMENT '角色列表',
-  `depart_id` varchar(32) NOT NULL DEFAULT '' COMMENT '部门ID',
+  `id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ID',
+  `user_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '用户名',
+  `real_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '真实姓名',
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码',
+  `salt` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码盐',
+  `role_ids` varchar(500) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '角色列表',
+  `depart_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '部门ID',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `state` int NOT NULL DEFAULT '0' COMMENT '状态',
@@ -589,9 +589,9 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role` (
-  `id` varchar(32) NOT NULL COMMENT 'ID',
-  `user_id` varchar(32) NOT NULL COMMENT '用户ID',
-  `role_id` varchar(32) NOT NULL COMMENT '角色ID',
+  `id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ID',
+  `user_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户ID',
+  `role_id` varchar(32) COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户角色';
 
