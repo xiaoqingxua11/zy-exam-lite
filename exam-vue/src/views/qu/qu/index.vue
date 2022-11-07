@@ -160,31 +160,22 @@ export default {
         // 批量操作列表
         multiActions: [
           {
-            value: 'delete',
-            label: '删除'
-          }, {
-            value: 'enable',
-            label: '启用'
-          },
-          {
-            value: 'disable',
-            label: '禁用'
-          },
-          {
             value: 'add-repo',
             label: '加入题库..'
           },
           {
             value: 'remove-repo',
             label: '从..题库移除'
+          },
+          {
+            value: 'delete',
+            label: '删除'
           }
         ],
         // 列表请求URL
         listUrl: '/exam/api/qu/qu/paging',
         // 删除请求URL
         deleteUrl: '/exam/api/qu/qu/delete',
-        // 启用禁用
-        stateUrl: '/exam/api/qu/qu//state',
         // 添加数据路由
         addRoute: 'AddQu'
       }

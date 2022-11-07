@@ -382,6 +382,7 @@ export default {
 
   .content-h{
     height: calc(100vh - 110px);
+    overflow-y: auto;
   }
 
   .card-title{
