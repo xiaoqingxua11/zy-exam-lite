@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -71,6 +73,13 @@ public class UploadServiceImpl implements UploadService {
 
         // 获取真实的文件路径
         String filePath = this.getRealPath(request.getRequestURI());
+
+        // 处理中文问题
+        try {
+            filePath =  URLDecoder.decode(filePath, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
 
         System.out.println("++++完整路径为："+filePath);
 
