@@ -72,7 +72,7 @@
           <div v-if="quData.quType === 2">
 
             <el-checkbox-group v-model="multiValue">
-              <el-checkbox v-for="item in quData.answerList" :label="item.id">{{ item.abc }}.{{ item.content }}
+              <el-checkbox v-for="item in quData.answerList" :key="item.id" :label="item.id">{{ item.abc }}.{{ item.content }}
                 <div v-if="item.image!=null && item.image!=''" style="clear: both">
                   <el-image :src="item.image" style="max-width:100%;" />
                 </div>
