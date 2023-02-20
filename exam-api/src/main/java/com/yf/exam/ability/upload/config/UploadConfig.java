@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 文件上传配置
+ * @author van
  */
 @Data
 @Configuration
