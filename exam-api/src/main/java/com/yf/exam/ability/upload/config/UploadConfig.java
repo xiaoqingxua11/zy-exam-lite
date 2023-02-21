@@ -24,4 +24,9 @@ public class UploadConfig {
      */
     private String dir;
 
+    /**
+     * 允许的后缀
+     */
+    private String [] allowExtensions;
+
 }
