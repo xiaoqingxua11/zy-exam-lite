@@ -1,8 +1,8 @@
 {
   "name": "yf-exam-lite",
   "version": "1.9.1",
-  "description": "云帆学习考试系统",
-  "author": "18365918@qq.com",
+  "description": "华仔学习考试系统",
+  "author": "911707979@qq.com",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build:prod": "vue-cli-service build",
@@ -10,7 +10,6 @@
     "lint": "eslint --ext .js,.vue src",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
-
   "dependencies": {
     "axios": "^0.21.1",
     "babel-plugin-dynamic-import-node": "^2.3.3",
@@ -66,5 +65,8 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "main": ".eslintrc.js",
+  "keywords": [],
+  "license": "ISC"
 }

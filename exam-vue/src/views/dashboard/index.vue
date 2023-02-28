@@ -11,7 +11,7 @@
           <div style="line-height: 32px;">
 
             <div class="title" style="padding-top: 0px">系统介绍</div>
-            云帆考试系统是一款基于SpringBoot+Vue开发的考试系统。包含在线考试、用户体系、错题训练、考试规则、智能算分等考试功能，流程通畅。
+            华仔考试系统是一款基于SpringBoot+Vue开发的考试系统。包含在线考试、用户体系、错题训练、考试规则、智能算分等考试功能，流程通畅。
 
             <div class="title">技术栈</div>
             <div class="tags">
@@ -48,12 +48,12 @@
 
           <div>
 
-            <div class="title" style="padding-top: 0px">商业咨询</div>
+            <div class="title" style="padding-top: 0px">意见反馈</div>
             <div style="display: flex;">
               <div style="flex-grow: 1;">
-                <div>微信：gyh_yinzi（微信号）或搜索手机18603038204</div>
-                <div>手机：<a href="tel:18603038204">18603038204（郭女士）</a></div>
-                <div>邮箱：<a href="mailto:835487894@qq.com">835487894@qq.com</a> </div>
+                <div>微信：supercool_xyh（微信号）或搜索手机18912721281</div>
+                <div>手机：<a href="tel:17768652591">18912721281</a></div>
+                <div>邮箱：<a href="mailto:9117079@qq.com">1149010748@qq.com</a> </div>
               </div>
               <div style="width: 120px; display: flex; align-items: center; flex-direction: column; align-content: flex-end">
                 <img style="width: 100px; height: 100px" src="@/assets/contact.png" >
@@ -64,14 +64,14 @@
 
             <div class="title">支持网站</div>
             <div>
-              <div>企业官网：<a href="https://www.yfhl.net" target="_blank">https://www.yfhl.net</a></div>
-              <div>在线试用：<a href="https://exam.yfhl.net" target="_blank">https://exam.yfhl.net</a></div>
+              <div>江苏大学：<a href="https://www.ujs.edu.cn" target="_blank">https://www.ujs.edu.cn</a></div>
+              <div>京江学院：<a href="https://jjxy.ujs.edu.cn" target="_blank">https://jjxy.ujs.edu.cn</a></div>
             </div>
 
-            <div class="title">在线试用</div>
+            <div class="title">在线联系</div>
             <div style="display: flex; align-items: center">
-              <img src="@/assets/h5.png" style="width: 150px; height: 150px; border: #efefef 1px solid">
-              <img src="@/assets/mp.jpg" style="width: 150px; height: 150px; border: #efefef 1px solid; margin-left: 20px">
+              <img src="@/assets/colleage1.png" style="width: 150px; height: 150px;">
+              <img src="@/assets/school.png" style="width: 150px; height: 150px;margin-left: 20px">
             </div>
 
           </div>
