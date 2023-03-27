@@ -16,12 +16,7 @@ import com.yf.exam.modules.sys.user.service.SysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -173,5 +168,20 @@ public class SysUserController extends BaseController {
     public ApiRest<SysUserLoginDTO> quick(@RequestBody SysUserDTO reqDTO) {
         SysUserLoginDTO respDTO = baseService.quickReg(reqDTO);
         return success(respDTO);
+    }
+
+
+    /**
+     * 分页查找
+     * @param chapterNo
+     * @param  accessToken
+     * @return
+     */
+    @RequestMapping(value = "/test")
+    @CrossOrigin("*")
+    public void test(@RequestHeader("chapterNo")String chapterNo, @RequestHeader("leaguerNo")String leaguerNo, @RequestHeader("accessToken")String accessToken) {
+        //旭日接受参数和跳转到他们的首页  测试通过参数可以接受
+        String chapter=chapterNo;
+
     }
 }

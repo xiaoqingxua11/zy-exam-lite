@@ -17,10 +17,7 @@ import com.yf.exam.modules.exam.service.ExamService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -143,5 +140,21 @@ public class ExamController extends BaseController {
         return super.success(page);
     }
 
+
+    /**
+     * 分页查找
+     * @param chapterNo
+     * @param  accessToken
+     * @return
+     */
+    @RequestMapping(value = "/test")
+    @CrossOrigin("*")
+    public void test(@RequestHeader("chapterNo")String chapterNo,@RequestHeader("accessToken")String accessToken) {
+         int i=0;
+         int s=3;
+
+         String chapter=chapterNo;
+
+    }
 
 }

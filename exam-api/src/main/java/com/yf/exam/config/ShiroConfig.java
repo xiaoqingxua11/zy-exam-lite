@@ -46,6 +46,7 @@ public class ShiroConfig {
 
 		// 需要排除的一些接口
 		map.put("/exam/api/sys/user/login", "anon");
+		map.put("/exam/api/sys/user/test", "anon");
 		map.put("/exam/api/sys/user/reg", "anon");
 		map.put("/exam/api/sys/user/quick-reg", "anon");
 
